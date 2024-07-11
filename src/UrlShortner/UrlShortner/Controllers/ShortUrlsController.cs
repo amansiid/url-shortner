@@ -38,11 +38,16 @@ public class ShortUrlsController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpGet("{id}")]
-    public string GetShortUrl(string id)
+    [HttpGet("original/url/shortUrl")]
+    public string GetOriginalUrl(string id)
     {
-        Console.WriteLine($"request to get: {id}");
-        return "shortUrl";
+        var url = _context.Urls.SingleOrDefault(u => u.ShortenedUrl == shortUrl);
+
+        if (url == null)
+        {
+            return "shortened URL not found";
+        }
+        return url.OriginalUrl;
     }
 
     [HttpGet]
