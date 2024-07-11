@@ -2,14 +2,25 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UrlShortner.Models;
 
 namespace UrlShortner.Controllers;
+
 
 [Authorize(AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme},BasicAuthentication")]
 [ApiController]
 [Route("[controller]")]
 public class ShortUrlsController : ControllerBase
 {
+    private readonly Ilogger<ShortUrlsController> _logger;
+    private readonly UrlShortenerContext _context;
+
+    public ShortUrlsController(ILogger<ShortUrlsController> logger, UrlShortenerContext context)
+    {
+        _logger = logger;
+        _context = context;
+    }
+
     [Authorize(Policy = "AddCustomer")]
     [HttpPut("{id}")]
     public string CreateShortUrl(string id, [FromBody] JsonElement body)
