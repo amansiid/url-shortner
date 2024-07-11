@@ -3,7 +3,7 @@
     "appService.deploySubpath": ".",
 
     "connectionStrings": {
-        "default": "Server=tcp:siidshorturl.database.windows.net,1433;Initial Catalog=siidshorturl;Persist Security Info=False;User ID=cap2024;Password=cap@2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        "default": "Server=tcp:siidshorturl.database.windows.net,1433;Initial Catalog=siidshorturl;Persist Security Info=False;User ID=cap2024;Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
     }
 }
 
